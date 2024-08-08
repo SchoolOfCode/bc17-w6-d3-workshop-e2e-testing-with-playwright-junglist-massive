@@ -9,8 +9,14 @@ test ("practice test should pass",async ({page}) =>{
     await expect(textbox).toHaveValue('some value');
 })
 
-test ("heading appears",async ({page}) =>{
+test ("End to end",async ({page}) =>{
     await page.goto("http://localhost:3000");
 
     await expect(page.getByText('Todo List App')).toBeVisible();
+
+    await page.getByRole('textbox').fill('wake up');
+
+    const button = page.getByRole('button');
+
+    await button.click();
 })
